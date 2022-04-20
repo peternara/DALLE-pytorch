@@ -360,6 +360,8 @@ First, you need to install Deepspeed with Sparse Attention
 
 ```bash
 $ sh install_deepspeed.sh
+이게 안되면,
+$ pip install deepspeed
 ```
 
 Next, you need to install the pip package `triton`. It will need to be a version `< 1.0` because that's what Microsoft used.
@@ -596,6 +598,10 @@ deepspeed train_dalle.py \
     --image_text_folder 'DatasetsDir' \
     --distr_backend 'deepspeed' \
     --amp
+  
+나는 0이 아닌 나머지 7개 GPU 사용하려면, 그리고, --fp16 --deepspeed 해야한다; 위의 방법은 시도하지 않았음.(해야봐야함.)
+nohup 하려면, deepspeed 앞에
+$ deepspeed --include=localhost:1,2,3,4,5,6,7 train_dalle.py --vae_path vae_weight/fashion_kaggle/vae.pt --image_text_folder ../../DB/Fashion_Product_Images_Dataset/fashion_kaggle --fp16 --deepspeed    
 ```
 
 #### Horovod

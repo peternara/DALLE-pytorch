@@ -601,7 +601,10 @@ deepspeed train_dalle.py \
   
 나는 0이 아닌 나머지 7개 GPU 사용하려면, 그리고, --fp16 --deepspeed 해야한다; 위의 방법은 시도하지 않았음.(해야봐야함.)
 nohup 하려면, deepspeed 앞에
+반드시 --deepspeed 해줘야함
+GPU 수 만큼 배치사이즈를 고려해야함  
 $ deepspeed --include=localhost:1,2,3,4,5,6,7 train_dalle.py --vae_path vae_weight/fashion_kaggle/vae.pt --image_text_folder ../../DB/Fashion_Product_Images_Dataset/fashion_kaggle --fp16 --deepspeed    
+$ deepspeed --include=localhost:1,2,3,4,5,6,7 train_dalle.py --vae_path vae_weight/fashion_kaggle/vae.pt --image_text_folder ../../DB/Fashion_Product_Images_Dataset/fashion_kaggle  --deepspeed
 ```
 
 #### Horovod
